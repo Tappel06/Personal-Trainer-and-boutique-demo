@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge Fitness | Boutique Gym & Personal Training</title>
+    <style>
+        /* CSS Variables for Premium Gym Theme */
+        :root {
+            --primary: #00ff87; /* High-energy neon green */
+            --primary-hover: #00cc6a;
+            --dark-bg: #0a0a0a;
+            --card-bg: #171717;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--dark-bg);
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 135, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.4) 100%), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-muted);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        /* Value Props / Services */
+        .services {
+            padding: 6rem 5%;
+            background-color: var(--dark-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .section-header span {
+            color: var(--primary);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* Trainer Bio Section */
+        .bio-section {
+            padding: 6rem 5%;
+            background-color: var(--card-bg);
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .bio-image {
+            flex: 1;
+            min-height: 500px;
+            background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .bio-image::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .bio-content {
+            flex: 1;
+        }
+
+        .bio-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .bio-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Lead Gen / Contact */
+        .lead-gen {
+            padding: 6rem 5%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            text-align: center;
+        }
+
+        .lead-gen-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--dark-bg);
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        footer {
+            background: #000;
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid #333;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .bio-section { flex-direction: column; }
+            .bio-image { width: 100%; min-height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Forge<span>Fit</span></a>
+        <a href="#claim-pass" class="btn">Claim Free Pass</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Ditch the Crowds.<br>Find Your Peak.</h1>
+            <p>Kempton Park's premier private training facility. Expert coaching, elite equipment, and a community built on actual results—not mirror selfies.</p>
+            <a href="#claim-pass" class="btn" style="padding: 1.2rem 2.5rem; font-size: 1.2rem;">Start Your 3-Day Trial</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Train With <span>Purpose</span></h2>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Choose the protocol that fits your goals.</p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="card">
+                <h3>1-on-1 Personal Training</h3>
+                <p>Complete bespoke programming tailored strictly to your biomechanics, goals, and schedule. Includes macro-nutrient planning.</p>
+            </div>
+            <div class="card">
+                <h3>Small Group MetCon</h3>
+                <p>High-intensity metabolic conditioning capped at 8 people per class. Get the energy of a group with the attention of a private coach.</p>
+            </div>
+            <div class="card">
+                <h3>Strength & Powerlifting</h3>
+                <p>Learn the big three (Squat, Bench, Deadlift) with competition-grade racks, barbells, and calibrated plates.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bio-section">
+        <div class="bio-image"></div>
+        <div class="bio-content">
+            <h2>Meet Head Coach <span>Marcus</span></h2>
+            <p>"I opened ForgeFit because I was tired of commercial gyms treating members like barcodes. Fitness is a highly personal journey, and it requires a personal touch."</p>
+            <p>With 10+ years of clinical biomechanics and sports nutrition experience, Marcus specializes in taking everyday professionals and forging them into the strongest, most resilient versions of themselves.</p>
+            <ul style="list-style: none; margin-top: 1.5rem; color: var(--text-muted);">
+                <li style="margin-bottom: 0.5rem;"><strong style="color: var(--primary);">✓</strong> BSc Sports Science</li>
+                <li style="margin-bottom: 0.5rem;"><strong style="color: var(--primary);">✓</strong> Precision Nutrition L2</li>
+                <li style="margin-bottom: 0.5rem;"><strong style="color: var(--primary);">✓</strong> 500+ Transformations</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="claim-pass" class="lead-gen">
+        <div class="lead-gen-box">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Experience the Difference</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Drop your details below to claim a zero-commitment 3-Day All Access Pass. We cap our trial memberships to ensure everyone gets attention.</p>
+            
+            <form action="https://formspree.io/f/your_form_id" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="WhatsApp Number" required>
+                </div>
+                <div class="form-group">
+                    <select name="goal" required style="background: var(--dark-bg); color: white; border: 1px solid #333;">
+                        <option value="" disabled selected>What is your primary goal?</option>
+                        <option value="Fat Loss">Fat Loss & Toning</option>
+                        <option value="Muscle Gain">Muscle & Strength Gain</option>
+                        <option value="General Health">General Health & Mobility</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; font-size: 1.2rem; padding: 1.2rem;">Send My Free Pass</button>
+            </form>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 1.5rem;">Located conveniently in central Kempton Park.</p>
+        </div>
+    </section>
+
+    <footer>
+        <h3 style="color: white; margin-bottom: 1rem;">Forge<span>Fit</span></h3>
+        <p>Your Address Line 1, Kempton Park, Gauteng</p>
+        <p style="margin-top: 1rem;">&copy; 2026 Forge Fitness. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
